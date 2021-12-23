@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #2967fc;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.switch-labels {
+  display: inline-flex;
+  position: relative;
+  background-color: #8baafc;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.switch-substrate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background-color: #fff;
+  transition: 0.5s ease-in-out;
+}
+
+.switch__label {
+  cursor: pointer;
+  padding: 12px;
+  display: block;
+  position: relative;
+  color: #2967fc;
+}
+
+#inputPhoto:checked ~ .switch-labels .switch-substrate {
+  width: var(--inputPhoto-width);
+}
+
+#inputVideo:checked ~ .switch-labels .switch-substrate {
+  width: var(--inputVideo-width);
+  transform: translateX(var(--inputVideo-width));
+}
+
+#inputAudio:checked ~ .switch-labels .switch-substrate {
+  width: var(--inputAudio-width);
+  transform: translateX(
+    calc(var(--inputPhoto-width) + var(--inputVideo-width))
+  );
+}
