@@ -1,0 +1,176 @@
+$breakpoints: (
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+);
+$border-radius: 6px;
+$button-box-shadow-focused: 0 0 0 2px rgb(0, 153, 255);
+
+.dropdown {
+  position: relative;
+
+  &-trigger {
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: $border-radius;
+      transition: 0.15s ease-in-out;
+      background-color: transparent;
+      &:hover {
+        background-color: #f4f6f8;
+      }
+      &:active {
+        color: $blue-800;
+        background-color: #e4e8ff;
+      }
+      &:focus-visible {
+        box-shadow: $button-box-shadow-focused;
+      }
+
+      &--lg {
+        width: 36px;
+        height: 36px;
+      }
+      &--md {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &__icon {
+      transform: rotate(90deg);
+      transition: 0.15s ease-in-out;
+    }
+  }
+  &__trigger {
+    &--active {
+      .dropdown-trigger__button {
+        color: $blue-800;
+        background-color: #e4e8ff;
+      }
+      .dropdown-trigger__icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  &__menu {
+    padding: 3px 0;
+    color: #fff;
+    position: absolute;
+    border-radius: $border-radius;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(9, 30, 66, 0.31),
+      0 1px 4px 0 rgba(9, 30, 66, 0.25);
+    white-space: nowrap;
+    z-index: 10;
+    overflow: hidden;
+
+    button,
+    a {
+      font: inherit;
+      display: block;
+      padding: 7px 10px;
+      color: blue;
+      line-height: 1.25;
+      transition: transition 0.2s ease-in-out;
+      &:focus-visible {
+        box-shadow: inset $button-box-shadow-focused;
+        outline: none;
+      }
+      &:hover {
+        color: #0865f3;
+        background-color: #f7f8fa;
+      }
+    }
+
+    button {
+      text-align: left;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      &[disabled] {
+        color: #c1c1c1;
+        pointer-events: none;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .center {
+    left: 50%;
+    transform: translateX(-50%);
+    @each $name, $pixels in $breakpoints {
+      &-#{$name} {
+        @media (min-width: #{$pixels}px) {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+
+  .right {
+    right: 0;
+    @each $name, $pixels in $breakpoints {
+      &-#{$name} {
+        @media (min-width: #{$pixels}px) {
+          right: 0;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  .left {
+    @each $name, $pixels in $breakpoints {
+      &-#{$name} {
+        @media (min-width: #{$pixels}px) {
+          left: 0;
+          right: unset;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  .top {
+    bottom: 100%;
+    @each $name, $pixels in $breakpoints {
+      &-#{$name} {
+        @media (min-width: #{$pixels}px) {
+          bottom: 100%;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    top: 100%;
+    bottom: unset;
+    @each $name, $pixels in $breakpoints {
+      &-#{$name} {
+        @media (min-width: #{$pixels}px) {
+          top: 100%;
+          bottom: unset;
+        }
+      }
+    }
+  }
+}
+
+.pop-out-quick-enter-active,
+.pop-out-quick-leave-active {
+  transition: all 0.25s;
+}
+.pop-out-quick-enter,
+.pop-out-quick-leave-active {
+  opacity: 0;
+  transform: translateY(-7px);
+}
