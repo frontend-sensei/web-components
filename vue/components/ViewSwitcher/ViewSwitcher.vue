@@ -80,3 +80,39 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.ui-view-switcher {
+  display: flex;
+  margin: 2px 0;
+  &__item {
+    margin: 0 4px;
+
+    input {
+      &:checked {
+        & + .ui-view-switcher__view {
+          background-color: #edeef9;
+          color: #0e4f9c;
+        }
+      }
+
+      &:focus {
+        & + .ui-view-switcher__view {
+          box-shadow: 0 0 0 2px #0e4f9c;
+        }
+      }
+    }
+  }
+
+  &__view {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: $gray-500;
+    background-color: $gray-100;
+    transition: $transition-02;
+  }
+}
+</style>
