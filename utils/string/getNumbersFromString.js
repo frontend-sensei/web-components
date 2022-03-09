@@ -1,6 +1,6 @@
 const string = "asw4fd54fd400";
 
-export function getNumbers(string) {
+export function getNumbersFromString(string) {
   const numbers = [];
   let numberToAdd = "";
 
