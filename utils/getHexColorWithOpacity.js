@@ -102,12 +102,7 @@ const hexOpacityValues = {
   0: "00",
 };
 
-export const getHexColorWithOpacityMixin = {
-  methods: {
-    getHexColorWithOpacity(color = "#000000", opacity = 100) {
-      if (opacity < 0 || opacity > 100) return color;
-
-      return color + hexOpacityValues[opacity];
-    },
-  },
-};
+export const getHexColorWithOpacity = (color = "#000000", opacity = 100) => {
+  if (opacity < 0 || opacity > 100 || !opacity) return color;
+  return color + hexOpacityValues[opacity];
+}
